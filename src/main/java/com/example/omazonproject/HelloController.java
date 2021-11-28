@@ -14,7 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -106,6 +109,14 @@ public class HelloController {
         Matcher matcher = emailPat.matcher(input);
         return matcher.find();
     }
+    public void validateLogin(){
+        JdbcDao connectNow = new JdbcDao();
+        Connection connectionDB = connectNow.getConnention();
+        String verifylogin = "SELECT count(1) FROM userdata WHERE Email = " + emailEntered_Login.getText() + "' AND Password = ' " + passwordEntered_Login.getText()+ "'";
+
+
+    }
+
 }
 
 
